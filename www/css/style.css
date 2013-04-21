@@ -1,0 +1,10 @@
+.description + h2 {
+    line-height: 0;
+}
+.description {
+    font-weight: normal;
+}
+
+.monospace {
+    font-family: monospace;
+}

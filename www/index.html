@@ -1,41 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fortress of Keys</title>
+    <title>quizshare</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="format-detection" content="telephone=no" />
-     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="stylesheet" type="text/css" href="css/jquery-mobile.css" /> 
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
-    <script src="js/jquery-1.9.1.js"></script>
-    <script src="js/jquery-localize.js"></script>
-    <script src="js/jquery-mobile.js"></script>
-    <script src="js/selection-plugin.js"></script>
     <script src="js/knockout.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery-mobile.js"></script>
     <script src="js/fastclick.js"></script>
     <script src="js/application.js"></script>
 </head>
 <body>
-    <div data-role="page">
-        <div data-role="header">
-            <h1>Fortress of Keys</h1>
-        </div>
-        <div data-role="content">
 
-            <div data-role="collapsible">
-                <h1>Amazon</h1>
-                <h5 class="description" data-localize="username"></h5>
-                <h2 class="selectable monospace">some_user73</h2>
-                <h5 class="description" data-localize="password"></h5>
-                <h2 class="selectable monospace">tz&3Nk)</h2>
+   <div data-role="page" id="play">
+      <div data-role="header">
+         <h1>quizshare</h1>
+      </div>
+      <div data-role="content">
+
+      </div>
+   </div>
+   
+   <div data-role="page" id="share">
+      <div data-role="header">
+        <h1>quizshare</h1>
+      </div>
+      <div data-role="content">
+
+     </div>
+   </div>
+   
+   
+   <div data-role="page" id="create">
+      <div data-role="header">
+         <h1>quizshare</h1>
+         <a href="#options" class="ui-btn-right" data-theme="c" 
+            data-icon="bars" data-iconpos="notext"></a>
+      </div>
+      
+      <div data-role="panel" id="options" data-display="overlay">
+         <ul data-role="listview">
+            <li><a href="#" data-bind="text: l.delete_question"></a></li>
+         </ul>
+      </div>
+      
+      <div data-role="content">
+         <input type="range" min="1" max="10" data-bind="value: quiz.current_index"/>
+         <input type="text" 
+                data-bind="attr: { placeholder: l.question_text }, text: quiz.current_question.question_text">
+         <span data-bind="text: l.type"></span>
+         <select data-bind="value: quiz.current_question.type">
+            <option value="multiple-choice" data-bind="text: l.multiple_choice"></option>
+            <option value="numeric" data-bind="text: l.numeric"></option>
+         </select>
+         <div data-bind="if: quiz.current_question.type === 'multiple-choice'">
+            <span data-bind="text: l.correct_answer"></span>
+            <input type="text"
+                   data-bind="attr: { placeholder: l.correct_answer }, text: quiz.current_question.specific.correct_answer">
+            <span data-bind="text: l.wrong_answers"></span>
+            <div data-bind="foreach: { data: quiz.current_question.specific.wrong_answers, as: 'wrong_answer' }">
+               <input type="text"
+                      data-bind="attr: { placeholder: l.wrong_answer }, text: wrong_answer">
             </div>
-    
-        </div>
-        <div data-role="footer">
-            <h6>by Erik Diessel</h6>
-        </div>
-    </div>
+         </div>
+      </div>
+      
+      <div data-role="footer">
+         <div data-role="navbar">
+            <ul>
+               <li><a href="#play" data-bind="text: l.play"></a></li>
+               <li><a href="#share" data-bind="text: l.share"></a></li>
+               <li><a href="#create" data-bind="text: l.create"></a></li>
+            </ul>
+         </div>
+      </div>
+      
+   </div>
+
 </body>
 </html>

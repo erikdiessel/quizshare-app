@@ -3,10 +3,10 @@
         id        = "com.diessel.fortressofkeys"
         version   = "1.0.0">
 
-    <name>Fortress of Keys</name>
+    <name>quizshare</name>
 
     <description>
-        The simple online password manager
+        Play, share and create quizzes
     </description>
 
     <author>

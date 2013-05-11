@@ -1,10 +1,12 @@
-.description + h2 {
-    line-height: 0;
-}
-.description {
-    font-weight: normal;
+[data-role="page"] {
+   max-width: 62.5em !important;
+   margin: 0 auto !important;
+   position: relative !important;
 }
 
-.monospace {
-    font-family: monospace;
+@media (min-width: 50em) {
+   [data-role="page"] {
+      padding-left: 17em;
+   }
 }
+
